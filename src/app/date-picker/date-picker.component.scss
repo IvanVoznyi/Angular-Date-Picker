@@ -1,0 +1,109 @@
+.date-picker-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: calc(100% - 1px);
+    justify-items: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+
+    .previous-month, .next-month {
+        line-height: 50px;
+        cursor: pointer;
+        text-align: center;
+        overflow: hidden;
+
+        &:hover {
+            background-color: #abdbe3;
+        }
+    }
+    
+    .previous-month {
+        border-right: 1px solid black;
+        width: calc(100% - 1px);
+        grid-column: span 2;
+        
+        div {
+            transform: scale(1.5);
+        }
+    }
+
+    .next-month {
+        border-left: 1px solid black;
+        grid-column: span 2;
+        width: calc(100% - 1px);
+
+        div {
+            transform: scale(1.5);
+        }
+    }
+
+    .year-month-container {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        grid-column: span 3;
+
+        .year-label {
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .month-label {
+            height: 25px;
+            line-height: 25px;
+        }
+    }
+}
+.month {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    justify-items: center;
+    
+    .day, .day-name{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        margin-bottom: -1px;
+        line-height: 50px;
+    }
+
+    .day:nth-child(7n), .day-name:nth-child(7n) {
+        border-right: 1px solid black;
+    }
+
+    .day:nth-last-child(-n+7) {
+        border-bottom: 1px solid black;
+    }
+
+    .day-name {
+        font-weight: bold;
+    }
+
+    .current-day {
+        font-weight: bold;
+        background-color: rgba($color: #76b5c5, $alpha: 0.7);
+    }
+
+    .current-day-month {
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($color: #76b5c5, $alpha: 0.3);
+        }
+    }
+
+    .selected-date {
+        background-color: rgba($color: #76b5c5, $alpha: 0.9);
+        color: #000000 !important;
+    }
+
+    .day:not(.current-day-month) {
+        color: grey;
+    }
+}

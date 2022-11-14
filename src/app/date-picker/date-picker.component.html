@@ -1,0 +1,32 @@
+<div class="date-picker-header">
+  <div class="previous-month" (click)="previousMonth()">
+    <div>&#11164;</div>
+  </div>
+  <div class="year-month-container">
+    <div class="year-label">{{ date | date: "YYYY" }}</div>
+    <div class="month-label">{{ date | date: "LLLL" }}</div>
+  </div>
+  <div class="next-month" (click)="nextMonth()">
+    <div>&#11166;</div>
+  </div>
+</div>
+<div class="month">
+  <div
+    class="day-name"
+    *ngFor="let day of days | slice: 0:7; trackBy: dateTrackBy"
+  >
+    {{ day | date: "E" }}
+  </div>
+  <div
+    [ngClass]="{
+      'current-day-month': date.getMonth() === day.getMonth(),
+      'current-day': isCheckedDate(currentDate, day),
+      'selected-date': isCheckedDate(_selectedDate, day)
+    }"
+    class="day"
+    *ngFor="let day of days; trackBy: dateTrackBy"
+    (click)="onSelectedDate(day)"
+  >
+    {{ day | date: "d" }}
+  </div>
+</div>
